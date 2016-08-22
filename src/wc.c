@@ -1,16 +1,19 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(int argc, char** argv) {
   int lCnt, wCnt, cCnt = 0;
   char c;
-  short nonW = 0;
+  bool nonW = false;
   while((c = getchar()) != EOF) {
     cCnt++;
-    if (c == ' ' || c == '\n') {
-      if (nonW == 1) wCnt++;
-      nonW = 0;
+    if (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r') {
+      if (nonW) {
+        wCnt++;
+        nonW = false;
+      }
     } else {
-      nonW = 1;
+      if (!nonW) nonW = true;
     }
     if (c == '\n') {
       lCnt++;
