@@ -13,7 +13,7 @@ static void get_err(char** err) {
 
 int main(void) {
   char *numStr = "445";
-  char *end;
+  char *end = "";
   long rr = 0;
   if (numStr[0] == '\0') printf("Empty str\n");
   else {
@@ -25,7 +25,6 @@ int main(void) {
 
   char arr[100] = "Hello1234567";
   arr_len(arr);
-  char arr2[] = "Privet";
   char arr3[100];
   char *s1, *s3;
 
@@ -61,7 +60,11 @@ int main(void) {
   printf("z1: %s, len: %ld, size: %ld\n", z1, strlen(z1), sizeof(z1));
   printf("z2: %s, len: %ld, size: %ld\n", z2, strlen(z2), sizeof(z2));
 
-  char* pEnd;
-  strtol("44f", &pEnd, 10);
-  printf("pEnd: %s\n", pEnd);
+  char* end2;
+  strtol("44f", &end2, 10);
+  printf("end2: %s\n", end2);
+
+  char* err;
+  get_err(&err);
+  printf("err: %s\n", err);
 }
