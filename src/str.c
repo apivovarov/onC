@@ -7,6 +7,10 @@ static int arr_len(char *a) {
   return 0;
 }
 
+static void get_err(char** err) {
+  *err = "Error1";
+}
+
 int main(void) {
   char *numStr = "445";
   char *end;
@@ -56,4 +60,8 @@ int main(void) {
 
   printf("z1: %s, len: %ld, size: %ld\n", z1, strlen(z1), sizeof(z1));
   printf("z2: %s, len: %ld, size: %ld\n", z2, strlen(z2), sizeof(z2));
+
+  char* pEnd;
+  strtol("44f", &pEnd, 10);
+  printf("pEnd: %s\n", pEnd);
 }
