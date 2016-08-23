@@ -11,6 +11,12 @@ static void get_err(char** err) {
   *err = "Error1";
 }
 
+char * concat_fopen (char *str, char *s1, char *s2) {
+  strcpy (str, s1);
+  strcat (str, s2);
+  return str;
+}
+
 int main(void) {
   char *numStr = "445";
   char *end = "";
@@ -67,4 +73,28 @@ int main(void) {
   char* err;
   get_err(&err);
   printf("err: %s\n", err);
+
+  char str1[100] = "";
+  char* str2 = "1234567";
+  char* str3 = "abcdefg";
+
+  strncpy(str1, str2 + 2, 3);
+  strncat(str1, "_", 1);
+  strncat(str1, str3 + 2, 3);
+  printf("%s\n", str1);
+
+  char strRes[10] = "";
+  sprintf(strRes, "%.4s_%.4s", str2 + 2, str3 + 2);
+  printf("strRes: %s\n", strRes);
+
+  char * strRes2 = NULL;
+  asprintf(&strRes2, "%.4s_%.4s", str2 + 2, str3 + 2);
+  printf("strRes2: %s, len: %ld\n", strRes2, strlen(strRes2));
+
+  int str2Len = strlen(str2);
+  char strRes3[str2Len + strlen(str3) + 1];
+  strcpy(strRes3, str2);
+  strcpy(strRes3 + str2Len, str3);
+  printf("strRes3: %s, len: %ld, sizeof: %ld\n",
+   strRes3, strlen(strRes3), sizeof(strRes3));
 }
